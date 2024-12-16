@@ -1,0 +1,25 @@
+body {
+  background-color: #faebd742;
+}
+.fsSpecial {
+  font-size: 10px;
+}
+.TopBar {
+  margin-inline: 10%;
+  background-color: white;
+}
+.paddingTu {
+  padding: 0px !important;
+}
+.margineNeg {
+  margin-top: -10px;
+  margin-left: 2px;
+}
+.marginTopp {
+  margin-top: 15px;
+}
+.specialh6:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: blue;
+}
