@@ -1,7 +1,10 @@
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import TopBar from "./components/TopBar";
 import Footer from "./components/Footer";
+import SezioneCentrale from "./components/SezioneCentrale";
 
 function App() {
   return (
@@ -13,6 +16,7 @@ function App() {
       >
         <TopBar />
       </div>
+      <SezioneCentrale />
       <Footer />
     </>
   );
