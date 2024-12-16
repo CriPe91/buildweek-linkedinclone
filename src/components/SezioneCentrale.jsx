@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { FileCheck } from "react-bootstrap-icons";
 import Sliders from "./Sliders";
+import Aside from "./Aside";
 
 const SezioneCentrale = () => {
   const [profileData, setiProfileData] = useState([]);
@@ -14,8 +15,8 @@ const SezioneCentrale = () => {
           {
             headers: {
               Authorization:
-                "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDE0MDBlYTI4NjAwMTUyOGI5NGEiLCJpYXQiOjE3MzQzNDUwMjQsImV4cCI6MTczNTU1NDYyNH0.Kqz3iZ0J2aoCvLEFVddDkOUt58k0TQHXqquqC64Sby0",
-            },
+                "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDE0MDBlYTI4NjAwMTUyOGI5NGEiLCJpYXQiOjE3MzQzNDUwMjQsImV4cCI6MTczNTU1NDYyNH0.Kqz3iZ0J2aoCvLEFVddDkOUt58k0TQHXqquqC64Sby0"
+            }
           }
         );
 
@@ -48,12 +49,12 @@ const SezioneCentrale = () => {
                   transform: "translate(5%, -50%)",
                   width: "120px",
                   height: "120px",
-                  borderRadius: "50%",
+                  borderRadius: "50%"
                 }}
               />
               <Card.Body
                 style={{
-                  transform: "translate(4%, -40%)",
+                  transform: "translate(4%, -40%)"
                 }}
               >
                 <Card.Title style={{ fontWeight: "700" }}>
@@ -95,6 +96,7 @@ const SezioneCentrale = () => {
               </Card.Body>
               <Sliders />
             </Card>
+            <Aside />
           </Col>
         </Row>
         <Row>

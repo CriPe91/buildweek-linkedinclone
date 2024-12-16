@@ -7,13 +7,13 @@ function Sliders() {
     infinite: false,
     speed: 500,
     slidesToShow: 2,
-    slidesToScroll: 1,
+    slidesToScroll: 1
   };
   return (
-    <div className="slider-container">
+    <div className="slider-container mb-2 mx-2">
       <Slider {...settings}>
         <div>
-          <Card className="ms-3" style={{ backgroundColor: "#dde7f1" }}>
+          <Card style={{ backgroundColor: "#dde7f1" }}>
             <p className="ms-2">
               <strong>Disponibile a lavorare</strong> <br />
               Ruoli di Assistente amministrativo <br />
@@ -24,7 +24,7 @@ function Sliders() {
           </Card>
         </div>
         <div>
-          <Card className="ms-3">
+          <Card className="ms-2">
             <p className=" ms-2">
               <strong>Fai sapere che stai facendo selezione</strong> e attrai
               candidati qualificati. <br />
@@ -33,7 +33,7 @@ function Sliders() {
           </Card>
         </div>
         <div>
-          <Card className="ms-3">
+          <Card className="ms-2">
             <p className=" ms-2">
               <strong>Metti in risalto i tuoi servizi</strong>in un apposita
               sezione sul tuo profilo, così sarà più facile trovarti. <br />
