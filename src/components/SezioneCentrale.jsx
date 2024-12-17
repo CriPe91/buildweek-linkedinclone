@@ -3,7 +3,6 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { FileCheck } from "react-bootstrap-icons";
 import Sliders from "./Sliders";
 import Aside from "./Aside";
-
 const SezioneCentrale = () => {
   const [profileData, setiProfileData] = useState([]);
 
@@ -15,8 +14,8 @@ const SezioneCentrale = () => {
           {
             headers: {
               Authorization:
-                "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDE0MDBlYTI4NjAwMTUyOGI5NGEiLCJpYXQiOjE3MzQzNDUwMjQsImV4cCI6MTczNTU1NDYyNH0.Kqz3iZ0J2aoCvLEFVddDkOUt58k0TQHXqquqC64Sby0"
-            }
+                "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDE0MDBlYTI4NjAwMTUyOGI5NGEiLCJpYXQiOjE3MzQzNDUwMjQsImV4cCI6MTczNTU1NDYyNH0.Kqz3iZ0J2aoCvLEFVddDkOUt58k0TQHXqquqC64Sby0",
+            },
           }
         );
 
@@ -49,12 +48,12 @@ const SezioneCentrale = () => {
                   transform: "translate(5%, -50%)",
                   width: "120px",
                   height: "120px",
-                  borderRadius: "50%"
+                  borderRadius: "50%",
                 }}
               />
               <Card.Body
                 style={{
-                  transform: "translate(4%, -40%)"
+                  transform: "translate(4%, -40%)",
                 }}
               >
                 <Card.Title style={{ fontWeight: "700" }}>
@@ -63,7 +62,7 @@ const SezioneCentrale = () => {
                     type="Button"
                     className="btn btn-light text-info mx-3 rounded-pill "
                   >
-                    <FileCheck cl /> Aggiungi badge di verifica
+                    <FileCheck /> Aggiungi badge di verifica
                   </Button>
                 </Card.Title>
                 <Card.Text>
@@ -95,8 +94,8 @@ const SezioneCentrale = () => {
                 </div>
               </Card.Body>
               <Sliders />
+              <Aside/>
             </Card>
-            <Aside />
           </Col>
         </Row>
         <Row>

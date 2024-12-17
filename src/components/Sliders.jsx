@@ -7,7 +7,7 @@ function Sliders() {
     infinite: false,
     speed: 500,
     slidesToShow: 2,
-    slidesToScroll: 1
+    slidesToScroll: 1,
   };
   return (
     <div className="slider-container mb-2 mx-2">
