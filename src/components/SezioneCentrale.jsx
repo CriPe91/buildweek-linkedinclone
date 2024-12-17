@@ -9,15 +9,12 @@ const SezioneCentrale = () => {
   useEffect(() => {
     const fetchProfilo = async () => {
       try {
-        const response = await fetch(
-          "https://striveschool-api.herokuapp.com/api/profile/6551f6cdc55e7e0018f83c0f",
-          {
-            headers: {
-              Authorization:
-                "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDE0MDBlYTI4NjAwMTUyOGI5NGEiLCJpYXQiOjE3MzQzNDUwMjQsImV4cCI6MTczNTU1NDYyNH0.Kqz3iZ0J2aoCvLEFVddDkOUt58k0TQHXqquqC64Sby0",
-            },
-          }
-        );
+        const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/6760008b0ea286001528b947", {
+          headers: {
+            Authorization:
+              "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDE0MDBlYTI4NjAwMTUyOGI5NGEiLCJpYXQiOjE3MzQzNDUwMjQsImV4cCI6MTczNTU1NDYyNH0.Kqz3iZ0J2aoCvLEFVddDkOUt58k0TQHXqquqC64Sby0",
+          },
+        });
 
         if (response.ok) {
           const data = await response.json();
@@ -58,43 +55,30 @@ const SezioneCentrale = () => {
               >
                 <Card.Title style={{ fontWeight: "700" }}>
                   {profileData.name}{" "}
-                  <Button
-                    type="Button"
-                    className="btn btn-light text-info mx-3 rounded-pill "
-                  >
+                  <Button type="Button" className="btn btn-light text-info mx-3 rounded-pill ">
                     <FileCheck /> Aggiungi badge di verifica
                   </Button>
                 </Card.Title>
                 <Card.Text>
                   {profileData.title} <br />
-                  {profileData.area} -{" "}
-                  <span className="text-info">Informazioni di contatto</span>
+                  {profileData.area} - <span className="text-info">Informazioni di contatto</span>
                 </Card.Text>
 
                 <div className="mt-5">
                   <Button className="rounded-pill ">Disponibile per</Button>
-                  <Button
-                    variant="outline-primary"
-                    className=" rounded-pill border-2 mx-2"
-                  >
+                  <Button variant="outline-primary" className=" rounded-pill border-2 mx-2">
                     Aggiungi sezione del profilo
                   </Button>
-                  <Button
-                    variant="outline-primary"
-                    className=" rounded-pill border-2 mx-2"
-                  >
+                  <Button variant="outline-primary" className=" rounded-pill border-2 mx-2">
                     Migliora profilo
                   </Button>
-                  <Button
-                    variant="outline-secondary"
-                    className="rounded-pill border-2 mx-2"
-                  >
+                  <Button variant="outline-secondary" className="rounded-pill border-2 mx-2">
                     Risorse
                   </Button>
                 </div>
               </Card.Body>
               <Sliders />
-              <Aside/>
+              <Aside />
             </Card>
           </Col>
         </Row>

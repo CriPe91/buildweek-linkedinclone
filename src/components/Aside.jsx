@@ -1,49 +1,25 @@
 import { Button, Card, Image } from "react-bootstrap";
-import {
-  ArrowRight,
-  BarChartFill,
-  EyeFill,
-  PencilFill,
-  PeopleFill,
-  Plus,
-} from "react-bootstrap-icons";
+import { ArrowRight, BarChartFill, EyeFill, PencilFill, PeopleFill, Plus } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import VisualizzazioneEsperienze from "./VisualizzazioneEsperienze";
+// import VisualizzazioneEsperienze from "./VisualizzazioneEsperienze";
 
 const Aside = () => {
   return (
     <>
       <Card className="mt-3">
         <Card.Body>
-          <Card.Title style={{ fontWeight: "600" }}>
-            Consigliati per te
-          </Card.Title>
+          <Card.Title style={{ fontWeight: "600" }}>Consigliati per te</Card.Title>
           <div className="d-flex">
-            <EyeFill
-              className="me-1 "
-              style={{ fontSize: "25px", color: "grey" }}
-            />
+            <EyeFill className="me-1 " style={{ fontSize: "25px", color: "grey" }} />
             <p style={{ color: "grey" }}>Solo per te</p>
           </div>
           <div className="border border-1">
             <Card.Text className="m-2">
-              <Image
-                src="https://static.licdn.com/aero-v1/sc/h/db05fgvyq7n2ng4fiexgf4hcq"
-                alt=""
-              />
-              <span className="text-black ms-2">
-                Scrivi un riepilogo per mettere in evidenza la tua personalità o
-                la tua esperienza lavorativa
-              </span>
-              <p>
-                Gli utenti che includono un riepilogo ricevono fino a 3,9 volte
-                più visualizzazioni del profilo.
-              </p>
+              <Image src="https://static.licdn.com/aero-v1/sc/h/db05fgvyq7n2ng4fiexgf4hcq" alt="" />
+              <span className="text-black ms-2">Scrivi un riepilogo per mettere in evidenza la tua personalità o la tua esperienza lavorativa</span>
+              <p>Gli utenti che includono un riepilogo ricevono fino a 3,9 volte più visualizzazioni del profilo.</p>
 
-              <Button
-                variant="btn btn-light border-black"
-                className="rounded-pill border-2 mx-2"
-              >
+              <Button variant="btn btn-light border-black" className="rounded-pill border-2 mx-2">
                 Aggiungi un riepilogo
               </Button>
             </Card.Text>
@@ -55,10 +31,7 @@ const Aside = () => {
         <Card.Body>
           <Card.Title style={{ fontWeight: "600" }}>Analisi</Card.Title>
           <div className="d-flex">
-            <EyeFill
-              className="me-1 "
-              style={{ fontSize: "25px", color: "grey" }}
-            />
+            <EyeFill className="me-1 " style={{ fontSize: "25px", color: "grey" }} />
             <p style={{ color: "grey" }}>Solo per te</p>
           </div>
           <div>
@@ -83,10 +56,7 @@ const Aside = () => {
                 <div className="d-flex">
                   <div className="d-flex">
                     <div>
-                      <BarChartFill
-                        style={{ fontSize: "24px" }}
-                        className="me-2 ms-4"
-                      />
+                      <BarChartFill style={{ fontSize: "24px" }} className="me-2 ms-4" />
                     </div>
                     <div>
                       <h6>
@@ -102,10 +72,7 @@ const Aside = () => {
             </Card.Text>
           </div>
         </Card.Body>
-        <button
-          style={{ width: "100%" }}
-          className="rounded border border-light-subtle border-top btn btn-light"
-        >
+        <button style={{ width: "100%" }} className="rounded border border-light-subtle border-top btn btn-light">
           <strong>
             Mostra tutte le analisi <ArrowRight className="my-2" />{" "}
           </strong>
@@ -126,9 +93,9 @@ const Aside = () => {
                 <PencilFill style={{ fontSize: "21px" }} />{" "}
               </Button>
             </div>
-            <div>
+            {/* <div>
               <VisualizzazioneEsperienze />
-            </div>
+            </div> */}
           </div>
         </Card.Body>
       </Card>
@@ -137,7 +104,7 @@ const Aside = () => {
           <div className="d-flex">
             <Card.Title style={{ fontWeight: "600" }}>Formazione</Card.Title>
             <div className="ms-auto">
-              <Button variant="btn btn-light" className="rounded-circle me-4">
+              <Button variant="btn btn-light" className="rounded-circle me-4 " onClick={toggleForm}>
                 <Plus style={{ fontSize: "25px" }} />
               </Button>
               <Button variant="btn btn-light" className="rounded-circle">
@@ -146,8 +113,6 @@ const Aside = () => {
               </Button>
             </div>
           </div>
-
-          <div></div>
         </Card.Body>
       </Card>
       <Card className="mt-3">
