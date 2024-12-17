@@ -155,7 +155,7 @@ const TopBar = () => {
                       className="fsSpecial align-content-center paddingTu margineNeg"
                     >
                       <NavDropdown.Item
-                        href="/"
+                        href="/me"
                         className="d-flex flex-column fsSpecial align-content-center text-center "
                       >
                         {" "}
@@ -181,7 +181,7 @@ const TopBar = () => {
                           className="heightBut text-center fsSpecial btn btn-outline-primary"
                         >
                           {" "}
-                          <Link to="/" style={{ textDecoration: "none" }}>
+                          <Link to="/" className="decoration-none">
                             {" "}
                             <strong>Visualizza il profilo </strong>
                           </Link>

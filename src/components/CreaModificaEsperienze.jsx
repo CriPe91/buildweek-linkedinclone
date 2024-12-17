@@ -112,7 +112,7 @@ const CreaModificaEsperienze = () => {
     <>
       <Container className="d-flex mb-5 mt-4 justify-content-center">
         <Row>
-          <Col md={12}>
+          <Col md={9}>
             <h1 className="mb-3">Aggiungi la tua Esperienza lavorativa!💼</h1>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formPlaintextEmail">
