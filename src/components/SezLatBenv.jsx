@@ -69,7 +69,7 @@ const SezLatBenv = () => {
 
                   <Button
                     variant="btn btn-outline-primary"
-                    className="rounded-pill "
+                    className="rounded-pill p-1 "
                   >
                     Messaggio
                   </Button>
@@ -106,7 +106,7 @@ const SezLatBenv = () => {
                   </p>
                   <Button
                     variant="btn btn-light border-black"
-                    className="rounded-pill border-2 mx-2"
+                    className="rounded-pill border-2 mx-2 p-1"
                   >
                     {" "}
                     <div className="d-flex justify-content-center align-items-center">
