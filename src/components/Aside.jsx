@@ -8,6 +8,8 @@ import {
   PeopleFill,
   Plus
 } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
+//import VisualizzazioneEsperienze from "./VisualizzazioneEsperienze";
 
 const Aside = () => {
   const [lavoroData, setLavoroData] = useState([]);
@@ -146,14 +148,17 @@ const Aside = () => {
           <div className="d-flex">
             <Card.Title style={{ fontWeight: "600" }}>Esperienza</Card.Title>
             <div className="ms-auto">
-              <Button variant="btn btn-light" className="rounded-circle me-4">
-                <Plus style={{ fontSize: "25px" }} />
-              </Button>
+              <Link to="/Esperienze">
+                <Button variant="btn btn-light" className="rounded-circle me-4">
+                  <Plus style={{ fontSize: "25px" }} />
+                </Button>
+              </Link>
               <Button variant="btn btn-light" className="rounded-circle">
                 {" "}
                 <PencilFill style={{ fontSize: "21px" }} />{" "}
               </Button>
             </div>
+            <div>{/* <VisualizzazioneEsperienze /> */}</div>
           </div>
 
           <div className="fsSpecial">

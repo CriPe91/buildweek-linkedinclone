@@ -4,6 +4,7 @@ import { FileCheck, PencilFill } from "react-bootstrap-icons";
 import Sliders from "./Sliders";
 import Aside from "./Aside";
 import SezLatBenv from "./SezLatBenv";
+import Footer from "./Footer";
 
 const SezioneCentrale = () => {
   const [profileData, setProfileData] = useState([]);
@@ -123,6 +124,7 @@ const SezioneCentrale = () => {
             <SezLatBenv />
           </Col>
         </Row>
+        <Footer />
       </Container>
     </>
   );
