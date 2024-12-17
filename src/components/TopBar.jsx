@@ -139,8 +139,12 @@ const TopBar = () => {
                       <img
                         src={profile.image}
                         alt="immagineprofilo"
-                        style={{ maxWidth: "25px" }}
-                        className="rounded-circle p-0 mb-0 marginTopp object-fit-contain"
+                        style={{
+                          width: "25px",
+                          height: "25px",
+                          objectFit: "cover"
+                        }}
+                        className="rounded-circle p-0 mb-0 marginTopp"
                       />
                     </div>
 
@@ -157,8 +161,12 @@ const TopBar = () => {
                           <img
                             src={profile.image}
                             alt="immagineprofilo"
-                            style={{ width: "60px" }}
-                            className="rounded-circle mb-2 object-fit-contain"
+                            style={{
+                              width: "60px",
+                              height: "60px",
+                              objectFit: "cover"
+                            }}
+                            className="rounded-circle mb-2"
                           />
 
                           <strong className="align-content-center ms-1">

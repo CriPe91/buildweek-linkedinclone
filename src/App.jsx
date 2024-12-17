@@ -5,6 +5,7 @@ import "./App.css";
 import TopBar from "./components/TopBar";
 import Footer from "./components/Footer";
 import SezioneCentrale from "./components/SezioneCentrale";
+import ComponenteHome from "./components/ComponenteHome";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       >
         <TopBar />
       </div>
+      <ComponenteHome />
       <SezioneCentrale />
       <Footer />
     </>

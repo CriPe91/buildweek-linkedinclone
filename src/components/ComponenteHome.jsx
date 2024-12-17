@@ -164,7 +164,7 @@ const ComponenteHome = () => {
             </Card>
           </Col>
           <Col sm={5}>
-            <ParteCenHome />{" "}
+            <ParteCenHome profileData={profileData} />{" "}
           </Col>
           <Col sm={3}>
             <ParteDestraHome />{" "}
