@@ -35,7 +35,7 @@ const FooterHome = () => {
               <strong className="specialh6">Mobile</strong>
             </NavLink>
           </Col>
-          <Col md={12} className="text-center">
+          <Col md={12} className="text-center mt-2">
             {" "}
             <div className="d-flex align-items-center">
               <Image

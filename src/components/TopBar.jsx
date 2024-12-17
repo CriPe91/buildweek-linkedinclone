@@ -16,6 +16,8 @@ import {
   HouseFill,
   PeopleFill
 } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
+
 const TopBar = () => {
   const [profile, setProfile] = useState([]);
   useEffect(() => {
@@ -153,7 +155,7 @@ const TopBar = () => {
                       className="fsSpecial align-content-center paddingTu margineNeg"
                     >
                       <NavDropdown.Item
-                        href="/me"
+                        href="/"
                         className="d-flex flex-column fsSpecial align-content-center text-center "
                       >
                         {" "}
@@ -179,7 +181,10 @@ const TopBar = () => {
                           className="heightBut text-center fsSpecial btn btn-outline-primary"
                         >
                           {" "}
-                          <strong>Visualizza il profilo </strong>
+                          <Link to="/" style={{ textDecoration: "none" }}>
+                            {" "}
+                            <strong>Visualizza il profilo </strong>
+                          </Link>
                         </Button>
                       </NavDropdown.Item>
                       <NavDropdown.Item href="/account">

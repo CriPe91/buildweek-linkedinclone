@@ -1,4 +1,4 @@
-const VisualizzazioneEsperienze = ({ esperienze, deleteEsperienza }) => {
+/*const VisualizzazioneEsperienze = ({ esperienze, deleteEsperienza }) => {
   return (
     <div>
       <h2>Le tue esperienze lavorative</h2>
@@ -21,4 +21,4 @@ const VisualizzazioneEsperienze = ({ esperienze, deleteEsperienza }) => {
   );
 };
 
-export default VisualizzazioneEsperienze;
+export default VisualizzazioneEsperienze;*/

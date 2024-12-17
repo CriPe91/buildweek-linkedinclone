@@ -15,14 +15,14 @@ const CreaModificaEsperienze = () => {
     startDate: "",
     endDate: "",
     description: "",
-    area: "",
+    area: ""
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: value
     }));
   };
 
@@ -35,7 +35,7 @@ const CreaModificaEsperienze = () => {
       startDate: formData.startDate,
       endDate: formData.endDate,
       description: formData.description,
-      area: formData.area,
+      area: formData.area
     };
 
     fetch(URL, {
@@ -44,8 +44,8 @@ const CreaModificaEsperienze = () => {
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzNjYWQ3NDRkOGViMzAwMTVhNGE1NGUiLCJpYXQiOjE3MzIwMjk4MTIsImV4cCI6MTczMzIzOTQxMn0.1pK5a1erZzJfD6CE8fLL6z5rW4ZGMWg1TtoDJJwXqwE",
-      },
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzNjYWQ3NDRkOGViMzAwMTVhNGE1NGUiLCJpYXQiOjE3MzIwMjk4MTIsImV4cCI6MTczMzIzOTQxMn0.1pK5a1erZzJfD6CE8fLL6z5rW4ZGMWg1TtoDJJwXqwE"
+      }
     })
       .then((resp) => {
         if (resp.ok) {
@@ -63,7 +63,7 @@ const CreaModificaEsperienze = () => {
             startDate: "",
             endDate: "",
             description: "",
-            area: "",
+            area: ""
           });
           alert(
             "Abbiamo creato una nuova esperienza con id: " + newExperience._id
@@ -89,8 +89,8 @@ const CreaModificaEsperienze = () => {
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzNjYWQ3NDRkOGViMzAwMTVhNGE1NGUiLCJpYXQiOjE3MzIwMjk4MTIsImV4cCI6MTczMzIzOTQxMn0.1pK5a1erZzJfD6CE8fLL6z5rW4ZGMWg1TtoDJJwXqwE",
-      },
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzNjYWQ3NDRkOGViMzAwMTVhNGE1NGUiLCJpYXQiOjE3MzIwMjk4MTIsImV4cCI6MTczMzIzOTQxMn0.1pK5a1erZzJfD6CE8fLL6z5rW4ZGMWg1TtoDJJwXqwE"
+      }
     })
       .then((resp) => {
         if (resp.ok) {
@@ -110,10 +110,9 @@ const CreaModificaEsperienze = () => {
 
   return (
     <>
-      <Container className="d-flex mb-5 mt-4">
+      <Container className="d-flex mb-5 mt-4 justify-content-center">
         <Row>
-          <Col md={7}></Col>
-          <Col md={5}>
+          <Col md={12}>
             <h1 className="mb-3">Aggiungi la tua Esperienza lavorativa!💼</h1>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formPlaintextEmail">
