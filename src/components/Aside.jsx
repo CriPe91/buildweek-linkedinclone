@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Button, Card, Image } from "react-bootstrap";
 import {
   ArrowRight,
@@ -9,6 +10,37 @@ import {
 } from "react-bootstrap-icons";
 
 const Aside = () => {
+  const [lavoroData, setLavoroData] = useState([]);
+  useEffect(() => {
+    const fetchProfilo2 = async () => {
+      try {
+        const response = await fetch(
+          "https://striveschool-api.herokuapp.com/api/profile/6760008b0ea286001528b947/experiences",
+          {
+            headers: {
+              Authorization:
+                "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDE0MDBlYTI4NjAwMTUyOGI5NGEiLCJpYXQiOjE3MzQzNDUwMjQsImV4cCI6MTczNTU1NDYyNH0.Kqz3iZ0J2aoCvLEFVddDkOUt58k0TQHXqquqC64Sby0"
+            }
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          setLavoroData(data);
+        } else {
+          throw new Error("Errore nell'importazione della fetch");
+        }
+      } catch (error) {
+        console.error("Errore di caricamento,", error);
+      }
+    };
+    fetchProfilo2();
+  }, []);
+  if (lavoroData.length === 0) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <Card className="mt-3">
@@ -124,7 +156,29 @@ const Aside = () => {
             </div>
           </div>
 
-          <div></div>
+          <div className="fsSpecial">
+            <h6>{lavoroData[0].role}</h6>
+            <p className="mb-0">{lavoroData[0].company}</p>
+            <cite className="fsSpecial">
+              Inizio:{" "}
+              {new Date(lavoroData[0].startDate).getDate() +
+                "/" +
+                (new Date(lavoroData[0].startDate).getMonth() + 1) +
+                "/" +
+                new Date(lavoroData[0].startDate).getFullYear()}
+            </cite>
+            <cite className="fsSpecial">
+              {" "}
+              Fine:
+              {new Date(lavoroData[0].endDate).getDate() +
+                "/" +
+                (new Date(lavoroData[0].endDate).getMonth() + 1) +
+                "/" +
+                new Date(lavoroData[0].endDate).getFullYear()}
+            </cite>
+            <p>{lavoroData[0].area}</p>
+            <hr />
+          </div>
         </Card.Body>
       </Card>
       <Card className="mt-3">
