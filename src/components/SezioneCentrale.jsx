@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { FileCheck } from "react-bootstrap-icons";
+import { FileCheck, PencilFill } from "react-bootstrap-icons";
 import Sliders from "./Sliders";
 import Aside from "./Aside";
+import SezLatBenv from "./SezLatBenv";
+import Footer from "./Footer";
 
 const SezioneCentrale = () => {
-  const [profileData, setiProfileData] = useState([]);
+  const [profileData, setProfileData] = useState([]);
 
   useEffect(() => {
     const fetchProfilo = async () => {
@@ -20,7 +22,7 @@ const SezioneCentrale = () => {
         if (response.ok) {
           const data = await response.json();
           console.log(data);
-          setiProfileData(data);
+          setProfileData(data);
         } else {
           throw new Error("Errore nell'importazione della fetch");
         }
@@ -30,6 +32,7 @@ const SezioneCentrale = () => {
     };
     fetchProfilo();
   }, []);
+
   return (
     <>
       <Container className="mt-5">
@@ -41,7 +44,7 @@ const SezioneCentrale = () => {
               <Card.Img
                 variant="top"
                 src={profileData.image}
-                className="rounded-circle ms-3 border border-4   border border-white "
+                className="rounded-circle ms-3 border border-4   border border-white object-fit-cover"
                 style={{
                   transform: "translate(5%, -50%)",
                   width: "120px",
@@ -51,15 +54,25 @@ const SezioneCentrale = () => {
               />
               <Card.Body
                 style={{
-                  transform: "translate(4%, -40%)",
+                  marginTop: "-80px",
+
+                  // transform: "translate(4%, -40%)"
                 }}
               >
-                <Card.Title style={{ fontWeight: "700" }}>
-                  {profileData.name}{" "}
-                  <Button type="Button" className="btn btn-light text-info mx-3 rounded-pill ">
-                    <FileCheck /> Aggiungi badge di verifica
-                  </Button>
-                </Card.Title>
+                <div className="d-flex">
+                  <Card.Title style={{ fontWeight: "700" }} className="d-flex align-items-center">
+                    {profileData.name} {profileData.surname}{" "}
+                    <Button type="Button" className="btn btn-light text-info mx-3 rounded-pill ">
+                      <FileCheck /> Aggiungi badge di verifica
+                    </Button>
+                    <div className="d-flex flex-inline" style={{ marginLeft: "300px" }}>
+                      <Button variant="btn btn-light" className="rounded-circle">
+                        {" "}
+                        <PencilFill style={{ fontSize: "21px" }} />{" "}
+                      </Button>
+                    </div>
+                  </Card.Title>
+                </div>
                 <Card.Text>
                   {profileData.title} <br />
                   {profileData.area} - <span className="text-info">Informazioni di contatto</span>
@@ -79,13 +92,14 @@ const SezioneCentrale = () => {
                 </div>
               </Card.Body>
               <Sliders />
-              <Aside />
             </Card>
+            <Aside />
+          </Col>
+          <Col md={3}>
+            <SezLatBenv />
           </Col>
         </Row>
-        <Row>
-          <Col md={4}></Col>
-        </Row>
+        <Footer />
       </Container>
     </>
   );

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Col, Row, Form, Container, Button } from "react-bootstrap";
-import Aside from "./Aside";
 
 const CreaModificaEsperienze = () => {
   const [formData, setFormData] = useState({
@@ -56,7 +55,7 @@ const CreaModificaEsperienze = () => {
   };
 
   return (
-    <Container className="d-flex mb-5 mt-4">
+    <Container className="d-flex mb-5 mt-5">
       <Row>
         <Col md={7}></Col>
         <Col md={5}>
@@ -76,7 +75,7 @@ const CreaModificaEsperienze = () => {
               <input
                 type="text"
                 className="form-control-plaintext"
-                placeholder="Inserisci la compagnia"
+                placeholder="Inserisci l'azienda"
                 name="company"
                 value={formData.company}
                 onChange={handleChange}
@@ -109,7 +108,6 @@ const CreaModificaEsperienze = () => {
             </Button>
           </Form>
           {/* Passa formData come prop al componente Aside */}
-          <Aside esperienza={formData} />
         </Col>
       </Row>
     </Container>

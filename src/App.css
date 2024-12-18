@@ -4,6 +4,9 @@ body {
 .fsSpecial {
   font-size: 10px;
 }
+.fsSpecial2 {
+  font-size: 14px;
+}
 .TopBar {
   margin-inline: 10%;
   background-color: white;
