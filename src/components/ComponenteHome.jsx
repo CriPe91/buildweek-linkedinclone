@@ -103,8 +103,8 @@ const ComponenteHome = () => {
                     {profileData.name} {profileData.surname}{" "}
                   </Card.Title>
                 </div>
-                <Card.Text>
-                  {profileData.title} <br />
+                <Card.Text style={{ fontSize: "15px" }}>
+                  {profileData.bio} <br />
                   {profileData.area}{" "}
                 </Card.Text>
                 <hr />
