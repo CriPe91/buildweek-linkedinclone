@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { FileCheck } from "react-bootstrap-icons";
 import Sliders from "./Sliders";
 import Aside from "./Aside";
+
 const SezioneCentrale = () => {
   const [profileData, setiProfileData] = useState([]);
 

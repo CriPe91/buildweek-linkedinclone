@@ -1,9 +1,8 @@
 import { Button, Card, Image } from "react-bootstrap";
 import { ArrowRight, BarChartFill, EyeFill, PencilFill, PeopleFill, Plus } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-// import VisualizzazioneEsperienze from "./VisualizzazioneEsperienze";
 
-const Aside = () => {
+const Aside = ({ esperienza }) => {
   return (
     <>
       <Card className="mt-3">
@@ -93,9 +92,14 @@ const Aside = () => {
                 <PencilFill style={{ fontSize: "21px" }} />{" "}
               </Button>
             </div>
-            {/* <div>
-              <VisualizzazioneEsperienze />
-            </div> */}
+            <div>
+              {/* Aggiungi un controllo per evitare errori quando 'esperienza' è undefined */}
+              <h5>{esperienza.role || "Ruolo non disponibile"}</h5>
+              <p>{esperienza.company || "Compagnia non disponibile"}</p>
+              <p>{esperienza.startDate ? `${esperienza.startDate} - ${esperienza.endDate}` : "Date non disponibili"}</p>
+              <p>{esperienza.description || "Descrizione non disponibile"}</p>
+              <p>{esperienza.area || "Area non disponibile"}</p>
+            </div>
           </div>
         </Card.Body>
       </Card>
@@ -104,7 +108,7 @@ const Aside = () => {
           <div className="d-flex">
             <Card.Title style={{ fontWeight: "600" }}>Formazione</Card.Title>
             <div className="ms-auto">
-              <Button variant="btn btn-light" className="rounded-circle me-4 " onClick={toggleForm}>
+              <Button variant="btn btn-light" className="rounded-circle me-4 ">
                 <Plus style={{ fontSize: "25px" }} />
               </Button>
               <Button variant="btn btn-light" className="rounded-circle">
