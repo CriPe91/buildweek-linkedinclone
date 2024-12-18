@@ -51,10 +51,11 @@ const TopBar = () => {
       <div className="TopBar">
         <Navbar
           expand="md"
+          fixed="top"
           className="bg-white marginS "
-          style={{ maxHeight: "50px" }}
+          style={{ maxHeight: "47px" }}
         >
-          <Container fluid>
+          <Container>
             <div className="d-flex">
               <Image
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pny7AAAAaVBMVEX///8BiNECiNEAhdCUv+VEmdcAgM4Ag89LltXu9ft+tOHu9/wwltbm8Pn0+Px6rd5PotsAfM34/v++3fGRw+Zkrd8AdcvS5fS72O/G3/Kx1e5en9krj9Sfyelyqt3d7feFvOVfptysz+zEGb41AAAFUElEQVR4nO1dbXeyMAy1raQKwsCXoay+4P//kY/omRuaKoOKoU/ucR/mqS3X3JY0pGY0YjAYDAaDwWAwGAwGg9EZ88VylQY9I10tF3PXTJKt+cxAq96hIfs0y8QhlfiQZUpUkJe/66vhPy0/dv4TQmXZYe+IynQrQXW7qg5kzi8Fcjt1wSUvQXe9qq5khNRQ5t25rAPoflXdyQgBwbozlxkISQICZh3ZbIx28a266UObTRcuU6MdXYiTPrTpsgqkVDR2gYC0PZcia39reYVlhMiKtlwiqRxeiJM+lGzr3CwVKZFVEGrZjksyUU6/VSd9qEk7P604fRHkyEjZbtaEyvGFOOlDhW24RF/q3TMEg/6KWpDJA5qWCdo4nIWhSca0mTTbdwvKhm0LMmPp/Ft10occtyGjaJJRTIbkyixfYxmpdAXVZGpRsMyjETTM0t3HrpwpeO71UCDzwNbZ13idx0m03xx3oHvTmHyBzLQc/0Tl4rWBAVjGNoKeHWt7pDwA+mRshpbHm7a56U9pji0D9154AeQtg4+gJ/d+a1zqgZLBtkcFUCeDw2Bu68b05TA4tYxCg6T7SmekLYOTmcRI62n46GEBBTK4mSdYwDcKYZAym2CP5CLylvFqzuBAV7N8mKuZ5T4z0JummtzrbLAeAOqbZY0uhN6cwbxm0V/AwPl+xtzsZ549+qRgGesI1U7zSmdfCN3wQgjKrLI1pMv1Po7jfL0tda9BqRdEZ6QGk5a7MjVaDyM683AEn+JmrS7knWRIgi3jGxkLBIqnLfCe3i2zyzJWh1K/mqEtriv4hYL6/dm/rIhOyUgTYvh5Ni3xFgdz7fB0k1ImKHfV2x+7MjC6ir2/Q2ZVDGB+i1oMQM3i+xbzUfodwtUQhNvqGcL5/aTyIsIUoOHq6TgGYAloXNtUZBCkl7xVDekxv01MmOfH0IDqXWYdyUBwxHOUo81BNgmK0CGjILSnWyebEuTLyFjnDEqmNmdwMkovHya/JcvnHjgVy6jn2RWFNbmdnMwaZIpswHZLoCWzrFGq2OLJGk3DMkHQbOAtvtsjJrOmiWIh0JfZounIcfDocS8NyzRHocnLrDniFZIlMVQy31nIhOfMHxCX9lkzOMtUy7M3MhttAjUMmUXTfHPamk0fJfVHO6vOKFkmPpbwmWWfmQkXD5qNtSAvs6RIQV+iBQogXVs3BOcUcdoyS8ZS/wougVraEvv3Vi+AimXmS11/kqPgYLHN/O4hKTWZrdXtua/T1tMyfOhaZo7JJJenhbUO8RSJUS17n+ScOSAHJYXe4Uv0kfbSPAfsDIsy+CHfwji2jFsy20xgHcIBHX7zc3yHoswsSVz6C42kWZNxaFim1GiHyqBb0Hji2DJuyaQ4GQG3+R5nTIdJJkOjac7JuJ0zqcVBgTHmBZzIUJ4zVpmFmIM2UJn1RKYnmdnIsMz+DzIsM6qWYTJUyfCcoWoZr8iwzKhaxisyLDOqlmEyVMnwnKFqGa/IsMyoWobJUCXDc4aqZbwiwzKjahmvyLDMqFqGyVAlw3OGqmW8ImORWZzcI67JbI+0eCAztMNeZCbl7uMeu9mvQ6doiw9jM/UM7dB18hw6tpDYWV9dOw5saWHpED08fFcp4iUyezf4CL1fZHz68Wmvfhbcqx9s9+qn9IkWOVCtihx4VX7Cr8Igic3Veyfalmw5F9OhZpm2xXRGc5/KHHlVgMqv0mCjiFrRtlb3mG/4VE7Pr0KHfpWgPDmcK6gdmXwLGaFh5aA46Gg0PfpTtnXkVUHdCu8tdbx1Wer4DH+KUDMYDAaDwWAwGAwGg/E/4h84zMG2qujluwAAAABJRU5ErkJggg=="
@@ -136,7 +137,7 @@ const TopBar = () => {
                       Notifiche
                     </Nav.Link>
                   </div>
-                  <div className="d-flex flex-column  me-5">
+                  <div className="d-flex flex-column  me-3">
                     <div className="text-center">
                       <img
                         src={profile.image}
@@ -155,7 +156,7 @@ const TopBar = () => {
                       className="fsSpecial align-content-center paddingTu margineNeg"
                     >
                       <NavDropdown.Item
-                        href="/me"
+                        href="/"
                         className="d-flex flex-column fsSpecial align-content-center text-center "
                       >
                         {" "}
@@ -246,7 +247,7 @@ const TopBar = () => {
                     </div>
                     <Nav.Link
                       href="/Aziende"
-                      className="fsSpecial align-content-center p-0"
+                      className="fsSpecial align-content-center p-0 ms-1"
                     >
                       Per le aziende
                     </Nav.Link>

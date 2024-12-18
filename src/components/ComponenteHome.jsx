@@ -8,6 +8,7 @@ import {
 } from "react-bootstrap-icons";
 import ParteCenHome from "./ParteCenHome";
 import ParteDestraHome from "./ParteDestraHome";
+import PostHome from "./PostHome";
 
 const ComponenteHome = () => {
   const [profileData, setProfileData] = useState([]);
@@ -164,7 +165,8 @@ const ComponenteHome = () => {
             </Card>
           </Col>
           <Col sm={5}>
-            <ParteCenHome profileData={profileData} />{" "}
+            <ParteCenHome profileData={profileData} />
+            <PostHome />{" "}
           </Col>
           <Col sm={3}>
             <ParteDestraHome />{" "}
