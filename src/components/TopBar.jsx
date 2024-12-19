@@ -20,30 +20,30 @@ import { Link } from "react-router-dom";
 
 const TopBar = () => {
   const [profile, setProfile] = useState([]);
-  useEffect(() => {
-    const profileFetch = async () => {
-      try {
-        const response = await fetch(
-          "https://striveschool-api.herokuapp.com/api/profile/me",
-          {
-            headers: {
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDA4YjBlYTI4NjAwMTUyOGI5NDciLCJpYXQiOjE3MzQzNTEyMzgsImV4cCI6MTczNTU2MDgzOH0.A7_dxDQ2czJRBCzIe0Af1bv9bVqqFDSEYrd-3JI-pPo"
-            }
+  const myProfileFetch = async () => {
+    try {
+      const response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/me",
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDA4YjBlYTI4NjAwMTUyOGI5NDciLCJpYXQiOjE3MzQzNTEyMzgsImV4cCI6MTczNTU2MDgzOH0.A7_dxDQ2czJRBCzIe0Af1bv9bVqqFDSEYrd-3JI-pPo"
           }
-        );
-        if (response.ok) {
-          const resp = await response.json();
-          console.log(resp);
-          setProfile(resp);
-        } else {
-          throw new Error("Error in fetching songs");
         }
-      } catch (err) {
-        console.log("error", err);
+      );
+      if (response.ok) {
+        const resp = await response.json();
+        console.log(resp);
+        setProfile(resp);
+      } else {
+        throw new Error("Error in fetching songs");
       }
-    };
-    profileFetch();
+    } catch (err) {
+      console.log("error", err);
+    }
+  };
+  useEffect(() => {
+    myProfileFetch();
   }, []);
 
   return (
