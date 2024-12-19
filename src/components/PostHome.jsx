@@ -14,6 +14,32 @@ const PostHome = () => {
   const [post, setPost] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const handleDelete = async (_id) => {
+    console.log("aooo", _id);
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${_id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDA4YjBlYTI4NjAwMTUyOGI5NDciLCJpYXQiOjE3MzQzNTEyMzgsImV4cCI6MTczNTU2MDgzOH0.A7_dxDQ2czJRBCzIe0Af1bv9bVqqFDSEYrd-3JI-pPo"
+          }
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Impossibile eliminare l'esperienza.");
+      }
+      const resp = await response.text();
+      console.log("esperienza eliminata, bravo", resp);
+      fetchPost();
+    } catch (err) {
+      console.error("VOLEVI EH", err);
+    }
+  };
+
   const fetchPost = async () => {
     try {
       const response = await fetch(
@@ -21,7 +47,7 @@ const PostHome = () => {
         {
           headers: {
             Authorization:
-              "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDE0MDBlYTI4NjAwMTUyOGI5NGEiLCJpYXQiOjE3MzQzNDUwMjQsImV4cCI6MTczNTU1NDYyNH0.Kqz3iZ0J2aoCvLEFVddDkOUt58k0TQHXqquqC64Sby0"
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDA4YjBlYTI4NjAwMTUyOGI5NDciLCJpYXQiOjE3MzQzNTEyMzgsImV4cCI6MTczNTU2MDgzOH0.A7_dxDQ2czJRBCzIe0Af1bv9bVqqFDSEYrd-3JI-pPo"
           }
         }
       );
@@ -29,8 +55,8 @@ const PostHome = () => {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-
         setPost(data);
+
         setLoading(false);
       } else {
         throw new Error("Errore nell'importazione della fetch");
@@ -129,7 +155,14 @@ const PostHome = () => {
                       <ThreeDots />
                     </div>
                     <div>
-                      <X />
+                      <Button
+                        variant="outline-danger"
+                        type="button"
+                        className="py-0 px-2"
+                        onClick={() => handleDelete(singlePost._id)}
+                      >
+                        <X className="my-1" />
+                      </Button>
                     </div>
                   </div>
                 </Card.Body>

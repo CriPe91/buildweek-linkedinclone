@@ -11,8 +11,6 @@ import {
 } from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
 
-//import VisualizzazioneEsperienze from "./VisualizzazioneEsperienze";
-
 const Aside = () => {
   const [formData, setFormData] = useState({
     role: "",
@@ -24,12 +22,39 @@ const Aside = () => {
   });
   const [lavoroData, setLavoroData] = useState([]);
   const [show, setShow] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleDelete = async (_id) => {
+    console.log("aooo", _id);
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/6760008b0ea286001528b947/experiences/${_id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDA4YjBlYTI4NjAwMTUyOGI5NDciLCJpYXQiOjE3MzQzNTEyMzgsImV4cCI6MTczNTU2MDgzOH0.A7_dxDQ2czJRBCzIe0Af1bv9bVqqFDSEYrd-3JI-pPo"
+          }
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Impossibile eliminare l'esperienza.");
+      }
+      const result = await response.text();
+      console.log("esperienza eliminata, bravo", result);
+      fetchEsperienze();
+    } catch (err) {
+      console.error("erroreeeee", err);
+    }
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Impedisce il comportamento predefinito di invio del form
 
+    // Prepara i dati da inviare
     const formattedData = {
       role: formData.role,
       company: formData.company,
@@ -44,31 +69,47 @@ const Aside = () => {
     };
 
     try {
-      console.log(formData);
-      const response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/6760008b0ea286001528b947/experiences",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDA4YjBlYTI4NjAwMTUyOGI5NDciLCJpYXQiOjE3MzQzNTEyMzgsImV4cCI6MTczNTU2MDgzOH0.A7_dxDQ2czJRBCzIe0Af1bv9bVqqFDSEYrd-3JI-pPo"
-          },
-          body: JSON.stringify(formattedData)
-        }
-      );
+      console.log("Dati inviati:", formattedData);
+
+      // Verifica se c'è o meno l'ID
+      const url = formData._id
+        ? `https://striveschool-api.herokuapp.com/api/profile/6760008b0ea286001528b947/experiences/${formData._id}`
+        : "https://striveschool-api.herokuapp.com/api/profile/6760008b0ea286001528b947/experiences";
+
+      const method = formData._id ? "PUT" : "POST"; // Se esiste _id, ci sarà una modifica dell'esperienza già creata prima, sennò te ne crea una nuova
+
+      const response = await fetch(url, {
+        method: method,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDA4YjBlYTI4NjAwMTUyOGI5NDciLCJpYXQiOjE3MzQzNTEyMzgsImV4cCI6MTczNTU2MDgzOH0.A7_dxDQ2czJRBCzIe0Af1bv9bVqqFDSEYrd-3JI-pPo"
+        },
+        body: JSON.stringify(formattedData)
+      });
 
       if (response.ok) {
         const data = await response.json();
-        fetchEsperienze();
-        // console.log(data);
+        console.log("Esperienza aggiornata/creata:", data);
 
-        setFormData(data); // Se la risposta è corretta, aggiorna i dati del form
+        fetchEsperienze();
+
+        //aggiorna dati form
+        setFormData({
+          role: "",
+          company: "",
+          startDate: "",
+          endDate: "",
+          description: "",
+          area: ""
+        });
+
+        setShow(false);
       } else {
-        throw new Error("Errore nell'importazione della fetch");
+        throw new Error("Errore durante l'invio dei dati al server");
       }
     } catch (error) {
-      console.error("Errore di caricamento,", error);
+      console.error("Errore durante l'invio della richiesta:", error);
     }
   };
 
@@ -217,13 +258,18 @@ const Aside = () => {
               <Button
                 variant="btn btn-light"
                 className="rounded-circle me-4 "
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  objectFit: "cover"
+                }}
                 onClick={handleShow}
               >
                 <Plus style={{ fontSize: "25px" }} />
               </Button>
               <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                  <Modal.Title>Modifica Presentazione</Modal.Title>
+                  <Modal.Title>Aggiungi Esperienza Lavorativa</Modal.Title>
                 </Modal.Header>
                 <Form onSubmit={handleSubmit}>
                   <Modal.Body>
@@ -324,17 +370,145 @@ const Aside = () => {
                   </Modal.Footer>
                 </Form>
               </Modal>
-
-              <Button variant="btn btn-light" className="rounded-circle">
-                {" "}
-                <PencilFill style={{ fontSize: "21px" }} />{" "}
-              </Button>
             </div>
           </div>
 
           {lavoroData.map((lavoroSing) => (
             <div className="fsSpecial" key={lavoroSing._id}>
-              <h6>{lavoroSing.role}</h6>
+              <div className="d-flex justify-content-between align-items-end">
+                <h6>{lavoroSing.role}</h6>
+                <div>
+                  <Button
+                    variant="btn btn-light"
+                    className="rounded-circle me-3 mt-2"
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      objectFit: "cover"
+                    }}
+                    onClick={() => {
+                      setFormData(lavoroSing);
+                      handleShow();
+                    }}
+                  >
+                    {" "}
+                    <PencilFill />{" "}
+                  </Button>
+                  <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Aggiungi Esperienza Lavorativa</Modal.Title>
+                    </Modal.Header>
+                    <Form onSubmit={handleSubmit}>
+                      <Modal.Body>
+                        <Form.Group
+                          className="mb-3"
+                          controlId="exampleForm.ControlInput1"
+                        >
+                          <Form.Label>Ruolo</Form.Label>
+                          <Form.Control
+                            name="role"
+                            onChange={handleChange}
+                            value={formData.role}
+                            type="text"
+                            placeholder="ruolo..."
+                            autoFocus
+                          />
+                        </Form.Group>
+                        <Form.Group
+                          className="mb-3"
+                          controlId="exampleForm.ControlInput1"
+                        >
+                          <Form.Label>Azienda</Form.Label>
+                          <Form.Control
+                            name="company"
+                            onChange={handleChange}
+                            value={formData.company}
+                            type="text"
+                            placeholder="Azienda..."
+                            autoFocus
+                          />
+                        </Form.Group>
+                        <Form.Group
+                          className="mb-3"
+                          controlId="exampleForm.ControlInput1"
+                        >
+                          <Form.Label>Data di inizio</Form.Label>
+                          <Form.Control
+                            name="startDate"
+                            value={formData.startDate}
+                            onChange={handleChange}
+                            type="date"
+                            autoFocus
+                          />
+                        </Form.Group>
+                        <Form.Group
+                          className="mb-3"
+                          controlId="exampleForm.ControlInput1"
+                        >
+                          <Form.Label>Data di fine</Form.Label>
+                          <Form.Control
+                            name="endDate"
+                            value={formData.endDate}
+                            onChange={handleChange}
+                            type="date"
+                            autoFocus
+                          />
+                        </Form.Group>
+                        <Form.Group
+                          className="mb-3"
+                          controlId="exampleForm.ControlInput1"
+                        >
+                          <Form.Label>Descrizione</Form.Label>
+                          <Form.Control
+                            name="description"
+                            onChange={handleChange}
+                            value={formData.description}
+                            type="text"
+                            placeholder="Inserisci la descrizione"
+                            autoFocus
+                          />
+                        </Form.Group>
+                        <Form.Group
+                          className="mb-3"
+                          controlId="exampleForm.ControlInput1"
+                        >
+                          <Form.Label>Località</Form.Label>
+                          <Form.Control
+                            name="area"
+                            onChange={handleChange}
+                            value={formData.area}
+                            type="text"
+                            placeholder="inserisci la città"
+                            autoFocus
+                          />
+                        </Form.Group>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                          Chiudi
+                        </Button>
+                        <Button
+                          variant="primary"
+                          type="submit"
+                          onClick={handleClose}
+                        >
+                          Salva
+                        </Button>
+                      </Modal.Footer>
+                    </Form>
+                  </Modal>
+                  <Button
+                    variant="danger"
+                    type="button"
+                    className="py-1 px-2 mt-2"
+                    onClick={() => {
+                      handleDelete(lavoroSing._id);
+                    }}
+                  >
+                    <Trash3Fill />
+                  </Button>
+                </div>
+              </div>
               <p className="mb-0">{lavoroSing.company}</p>
               <cite className="fsSpecial">
                 Inizio:{" "}
@@ -356,9 +530,6 @@ const Aside = () => {
               </cite>
               <div className="d-flex justify-content-between">
                 <p>{lavoroSing.area}</p>
-                <Button variant="danger" type="button" className="py-0 px-2">
-                  <Trash3Fill />
-                </Button>
               </div>
               <hr />
             </div>
@@ -370,12 +541,28 @@ const Aside = () => {
           <div className="d-flex">
             <Card.Title style={{ fontWeight: "600" }}>Formazione</Card.Title>
             <div className="ms-auto">
-              <Button variant="btn btn-light" className="rounded-circle me-4">
+              <Button
+                variant="btn btn-light"
+                className="rounded-circle me-4"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  objectFit: "cover"
+                }}
+              >
                 <Plus style={{ fontSize: "25px" }} />
               </Button>
-              <Button variant="btn btn-light" className="rounded-circle">
+              <Button
+                variant="btn btn-light"
+                className="rounded-circle"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  objectFit: "cover"
+                }}
+              >
                 {" "}
-                <PencilFill style={{ fontSize: "21px" }} />{" "}
+                <PencilFill />{" "}
               </Button>
             </div>
           </div>
@@ -388,12 +575,28 @@ const Aside = () => {
           <div className="d-flex">
             <Card.Title style={{ fontWeight: "600" }}>Competenze</Card.Title>
             <div className="ms-auto">
-              <Button variant="btn btn-light" className="rounded-circle me-4">
+              <Button
+                variant="btn btn-light"
+                className="rounded-circle me-4"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  objectFit: "cover"
+                }}
+              >
                 <Plus style={{ fontSize: "25px" }} />
               </Button>
-              <Button variant="btn btn-light" className="rounded-circle">
+              <Button
+                variant="btn btn-light"
+                className="rounded-circle"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  objectFit: "cover"
+                }}
+              >
                 {" "}
-                <PencilFill style={{ fontSize: "21px" }} />{" "}
+                <PencilFill />{" "}
               </Button>
             </div>
           </div>

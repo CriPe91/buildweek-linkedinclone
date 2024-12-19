@@ -124,6 +124,11 @@ const SezioneCentrale = () => {
                         onClick={handleShow}
                         variant="btn btn-light"
                         className="rounded-circle"
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          objectFit: "cover"
+                        }}
                       >
                         {" "}
                         <PencilFill style={{ fontSize: "21px" }} />{" "}

@@ -9,7 +9,7 @@ const ParteCenHome = ({ profileData }) => {
     setPostText(e.target.value);
   };
 
-  // invio del form con la pressione dell' "Enter"!
+  // invio del form con la pressione dell' "Enter"! mi faceva cagare il bottone
   const handleKeyDown = async (e) => {
     if (e.key === "Enter" && postText.trim() !== "") {
       e.preventDefault();
@@ -27,7 +27,7 @@ const ParteCenHome = ({ profileData }) => {
             headers: {
               "Content-Type": "application/json",
               Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDA4YjBlYTI4NjAwMTUyOGI5NDciLCJpYXQiOjE3MzQzNTEyMzgsImV4cCI6MTczNTU2MDgzOH0.A7_dxDQ2czJRBCzIe0Af1bv9bVqqFDSEYrd-3JI-pPo" // Sostituisci con il token dell'utente
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwMDA4YjBlYTI4NjAwMTUyOGI5NDciLCJpYXQiOjE3MzQzNTEyMzgsImV4cCI6MTczNTU2MDgzOH0.A7_dxDQ2czJRBCzIe0Af1bv9bVqqFDSEYrd-3JI-pPo"
             },
             body: JSON.stringify(newPost)
           }
@@ -36,7 +36,7 @@ const ParteCenHome = ({ profileData }) => {
         if (response.ok) {
           const data = await response.json();
           console.log("Post creato:", data);
-          setPostText(""); // Reset del campo del testo
+          setPostText(""); // Reset campo testo
         } else {
           console.error("Errore nella creazione del post");
         }
