@@ -2,7 +2,7 @@ import { Col, Container, NavLink, Row } from "react-bootstrap";
 import {
   GearFill,
   QuestionCircleFill,
-  ShieldShaded,
+  ShieldShaded
 } from "react-bootstrap-icons";
 
 const Footer = () => {
